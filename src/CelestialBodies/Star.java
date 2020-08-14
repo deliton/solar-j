@@ -27,8 +27,8 @@ public class Star extends CelestialBody{
 	
 	public void drawSunshine(Graphics g, double size, double panX, double panY) {
 		g.setColor(new Color(219, 113, 20, 50));
-		g.fillOval((int)(panX+650+(x-(diameter * 1.8)/2-650)*size), (int)(panY+500+(y-(diameter * 1.8)/2-500)*size),
-				(int)((diameter * 1.8)*size), (int)((diameter * 1.8)*size));
+		g.fillOval((int)(panX+650+(x-(diameter * 3)/2-650)*size), (int)(panY+500+(y-(diameter * 3)/2-500)*size),
+				(int)((diameter * 3)*size), (int)((diameter * 3)*size));
 	}
 	
 	

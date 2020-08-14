@@ -19,6 +19,8 @@ import javax.swing.*;
 
 import CelestialBodies.Planet;
 import CelestialBodies.Star;
+import Factories.AbstractFactory;
+import Factories.FactoryProvider;
 
 public class ProgramExecution extends JPanel {
 	private static final long serialVersionUID = 4285965111539342910L;
@@ -27,6 +29,9 @@ public class ProgramExecution extends JPanel {
 	Panel panel;
 	Planet[] planetsList = new Planet[8];
 	Star sun;
+	
+	AbstractFactory<?> starFactory = FactoryProvider.getFactory("star");
+	AbstractFactory<?> planetFactory = FactoryProvider.getFactory("planet");
 
 	double size = 1;
 	double panX = 1;
@@ -51,16 +56,16 @@ public class ProgramExecution extends JPanel {
 			e.printStackTrace();
 		}
 
-		sun = new Star(600, 400, .1, 0, 1000, 30, Color.ORANGE, 0,"Sun");
+		sun = (Star) starFactory.create("Sun");
 
-		planetsList[0] = new Planet(600, 450, -4.7, 0, 9, 8, Color.GRAY, 1000,"Mercury");
-		planetsList[1] = new Planet(752, 400, 0, 2.5, 900, 12, new Color(207,153,52), 1000,"Venus");
-		planetsList[2] = new Planet(600, 150, 1.8, 0, 900, 11, Color.BLUE, 2000,"Earth");
-		planetsList[3] = new Planet(650, -50, 1.2, 0, 900, 7, Color.RED, 2000, "Mars");
-		planetsList[4] = new Planet(600, -100, 1.2, 0, 900, 20, new Color(255,140,0), 2000, "Jupiter");
-		planetsList[5] = new Planet(600, -150, 1.2, 0, 900, 15, new Color(112,128,144), 2000,"Saturn");
-		planetsList[6] = new Planet(600, -175, 1.2, 0, 900, 15, new Color(196,233,238), 2000,"Uranus");
-		planetsList[7] = new Planet(0, 400, 0, -1.2, 900, 13, new Color(66, 98, 243), 2000,"Neptune");
+		planetsList[0] = (Planet) planetFactory.create("Mercury");
+		planetsList[1] = (Planet) planetFactory.create("Venus");
+		planetsList[2] = (Planet) planetFactory.create("Earth");
+		planetsList[3] = (Planet) planetFactory.create("Mars");
+		planetsList[4] = (Planet) planetFactory.create("Jupiter");
+		planetsList[5] = (Planet) planetFactory.create("Saturn");
+		planetsList[6] = (Planet) planetFactory.create("Uranus");
+		planetsList[7] = (Planet) planetFactory.create("Neptune");
 
 		Thread thread =  new Thread() {
 
